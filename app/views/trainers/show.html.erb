@@ -1,0 +1,23 @@
+<h1>Trainer</h1>
+
+<%= cl_image_tag @trainer.photo.key %>
+<%= @trainer.name %>
+<%= @trainer.age %>
+<% @trainer.pokemons.all.each do |pokemon|%>
+  <div class="col-md-4 mb-3">
+          <div class="card">
+            <% if pokemon.photo.present? %>
+              <%= link_to pokemon_path(pokemon) do %>
+                <div class="image-container">
+                  <%= cl_image_tag pokemon.photo.key, class: "card-category-img-top img-fluid", alt: pokemon.name %>
+                  <div class="card-body-overlay">
+                    <%= pokemon.name %>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+<% end %>
+
+<%= link_to "Retour à la liste des dresseurs", trainers_path  %>

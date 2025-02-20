@@ -1,0 +1,27 @@
+<h1>Pages#home</h1>
+
+<%= link_to "Pokedex", root_path  %>
+
+<div class="container">
+  <h1 class="mb-4">Trainers</h1>
+
+  <div class="row mb-3">
+    <% @trainers.each do |trainer| %>
+      <div class="col-md-4 mb-3">
+        <div class="card">
+          <% if trainer.photo.present? %>
+            <%= link_to trainer_path(trainer) do %>
+              <div class="image-container">
+                <%= cl_image_tag trainer.photo.key, class: "card-category-img-top img-fluid", alt: trainer.name %>
+                <div class="card-body-overlay">
+                  <%= trainer.name %>
+                  <%= trainer.age %>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
