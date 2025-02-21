@@ -8,4 +8,5 @@ class PokemonsController < ApplicationController
     @pokemon = Pokemon.find(params[:id])
     @pokeball = Pokeball.new
   end
+  
 end

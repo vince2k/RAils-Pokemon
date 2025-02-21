@@ -1,23 +1,48 @@
-<h1>Trainer</h1>
+<div class="container">
+  <%= link_to "< Trainers", trainers_path %>
 
-<%= cl_image_tag @trainer.photo.key %>
-<%= @trainer.name %>
-<%= @trainer.age %>
-<% @trainer.pokemons.all.each do |pokemon|%>
-  <div class="col-md-4 mb-3">
-          <div class="card">
-            <% if pokemon.photo.present? %>
-              <%= link_to pokemon_path(pokemon) do %>
-                <div class="image-container">
-                  <%= cl_image_tag pokemon.photo.key, class: "card-category-img-top img-fluid", alt: pokemon.name %>
-                  <div class="card-body-overlay">
-                    <%= pokemon.name %>
+  <div class="row mb-3">
+
+    <%# Trainer Card %>
+    <div class="col-md-4">
+      <div class="card card-trainer">
+        <% if @trainer.photo.attached? %>
+          <div>
+            <%= cl_image_tag @trainer.photo.key, class: "card-img-top img-fluid", alt: @trainer.name %>
+          </div>
+          <div class="card-body text-center">
+            <h5><%= @trainer.name %></h5>
+            <p><strong>Age :</strong> <%= @trainer.age %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <%# Pokemon Cards %>
+    <div class="col-md-8">
+    <h2>Their Pokémon</h2>
+      <div class="row">
+        <% @trainer.pokemons.each do |pokemon| %>
+          <div class="col-md-6 mb-3">
+            <div class="card card-pokemon d-flex flex-column h-100">
+              <% if pokemon.photo.attached? %>
+                <div>
+                  <%= cl_image_tag pokemon.photo.key, class: "card-img-top img-fluid", alt: pokemon.name %>
+                  <div class="card-body text-center flex-grow-1">
+                    <% pokeball = pokemon.pokeballs.find { |pokeball| pokeball.trainer == @trainer } %>
+                    <h5><%= pokemon.name %></h5>
+                    <p><strong>Type :</strong> <%= pokemon.element_type %></p>
+                    <p><strong>Caught on : </strong><%= pokeball.caught_on.strftime("%B %d, %Y") %></p>
+                    <p><strong>At : </strong><%= pokeball.location %></p>
                   </div>
+                  <%= link_to "Release", pokeball_path(pokeball), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "btn btn-outline-danger ms-2 my-1" %>
                 </div>
               <% end %>
-            <% end %>
+            </div>
           </div>
-        </div>
-<% end %>
+        <% end %>
+      </div>
+    </div>
 
-<%= link_to "Retour à la liste des dresseurs", trainers_path  %>
+  </div>
+</div>
