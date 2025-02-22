@@ -9,13 +9,13 @@ class TrainersController < ApplicationController
   end
 
   def new
-
+    
   end
 
   def create
 
   end
-  
+
   private
 
   def set_trainer

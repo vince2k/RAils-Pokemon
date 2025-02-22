@@ -1,8 +1,8 @@
-<div class="container">
+<div class="container pt-3">
 
-  <%= link_to "Pokedex", root_path  %>
+  <%= link_to "< Pokedex", root_path  %>
 
-  <div class="row">
+  <div class="row mt-3">
     <div class="col-md-6 mb-3">
       <div class="card card-pokemon">
         <div>
@@ -19,7 +19,7 @@
       <%= simple_form_for [@pokemon, @pokeball] do |f| %>
         <%= f.association :trainer, label: "Who is trying their luck?" %>
         <%= f.input :location, label: "Where are you?"%>
-        <%= f.input :caught_on, label: "Date of Capture", as: :date, input_html: { class: 'datepicker' } %>
+        <%= f.input :caught_on, label: "Date of Capture", as: :date %>
         <%= f.submit "Catch Pokémon", class: "btn btn-primary" %>
       <% end %>
     </div>

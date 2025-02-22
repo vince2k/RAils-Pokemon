@@ -1,4 +1,5 @@
 <div class="container">
+  <h1><%= link_to "< Pokedex", root_path  %></h1>
   <%= link_to "< Trainers", trainers_path %>
 
   <div class="row mb-3">
@@ -22,20 +23,21 @@
     <div class="col-md-8">
     <h2>Their Pokémon</h2>
       <div class="row">
-        <% @trainer.pokemons.each do |pokemon| %>
+        <% @trainer.pokeballs.each do |pokeball| %>
           <div class="col-md-6 mb-3">
             <div class="card card-pokemon d-flex flex-column h-100">
-              <% if pokemon.photo.attached? %>
+              <% if pokeball.pokemon.photo.attached? %>
                 <div>
-                  <%= cl_image_tag pokemon.photo.key, class: "card-img-top img-fluid", alt: pokemon.name %>
+                  <%= cl_image_tag pokeball.pokemon.photo.key, class: "card-img-top img-fluid", alt: pokeball.pokemon.name %>
                   <div class="card-body text-center flex-grow-1">
-                    <% pokeball = pokemon.pokeballs.find { |pokeball| pokeball.trainer == @trainer } %>
-                    <h5><%= pokemon.name %></h5>
-                    <p><strong>Type :</strong> <%= pokemon.element_type %></p>
+                    <h5><%= pokeball.pokemon.name %></h5>
+                    <p><strong>Type :</strong> <%= pokeball.pokemon.element_type %></p>
                     <p><strong>Caught on : </strong><%= pokeball.caught_on.strftime("%B %d, %Y") %></p>
                     <p><strong>At : </strong><%= pokeball.location %></p>
                   </div>
-                  <%= link_to "Release", pokeball_path(pokeball), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "btn btn-outline-danger ms-2 my-1" %>
+                  <div class="d-flex justify-content-center mt-auto">
+                    <%= button_to "Release", pokeball_path(pokeball), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "btn btn-danger ms-2 my-1 text-light" %>
+                  </div>
                 </div>
               <% end %>
             </div>

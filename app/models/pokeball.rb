@@ -4,4 +4,6 @@ class Pokeball < ApplicationRecord
 
   validates :caught_on, presence: true
   validates :location, presence: true
+
+  validates :pokemon_id, uniqueness: { scope: :trainer_id, message: "has already been caught by this trainer" }
 end

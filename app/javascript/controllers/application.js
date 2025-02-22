@@ -10,11 +10,3 @@ window.Stimulus   = application
 export { application }
 
 
-import flatpickr from "flatpickr";
-import "flatpickr/dist/flatpickr.min.css"; // Pour les styles
-
-document.addEventListener("DOMContentLoaded", function () {
-  flatpickr(".datepicker", {
-    dateFormat: "Y-m-d", // Format de la date
-  });
-});

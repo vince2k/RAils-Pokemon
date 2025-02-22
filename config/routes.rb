@@ -4,6 +4,6 @@ Rails.application.routes.draw do
     resources :pokeballs, only: [:new, :create]
   end
 
-  resources :trainers, only: [:index, :show]
-  resources :pokeballs, only: :destroy
+  resources :trainers, only: [:index, :show, :new, :create]
+  resources :pokeballs, only: [:destroy]
 end
