@@ -1,11 +1,36 @@
 .container {
   background-color: #051F49;
-}
 
-a {
-  color: #FAC75C;
-}
+  a {
+    color: #FAC75C;
+  }
 
-h1, h2, p, label {
-  color: white;
+  h1, h2, p, label {
+    color: white;
+  }
+
+  .btn-primary {
+    background-color: #FAC75C;
+    border-color: white;
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background-color: #ffffff;
+    border-color: #FAC75C;
+    color: #051F49;
+  }
+
+  .btn-danger {
+    background-color: #fa5c5c;
+    border-color: white;
+    color: white;
+    font-weight: 700;
+  }
+
+  .btn-danger:hover {
+    background-color: #ffffff;
+    border-color: #fa5c5c;
+    color: #051F49;
+  }
 }

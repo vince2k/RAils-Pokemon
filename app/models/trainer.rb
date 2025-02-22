@@ -6,4 +6,5 @@ class Trainer < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
   validates :age, presence: true
+  validates :photo, presence: true
 end

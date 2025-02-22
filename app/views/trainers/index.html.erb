@@ -2,7 +2,7 @@
 
 <%= link_to "< Pokedex", root_path  %>
 
-  <h1 class="mb-4">Trainers</h1>
+  <h1 class="mb-4">Let's get training !</h1>
 
   <div class="row mb-3 justify-content-center">
     <% @trainers.each do |trainer| %>
@@ -24,5 +24,5 @@
     <% end %>
   </div>
 
-  <%# new trainer %>
+  <%= link_to "New trainer", new_trainer_path, class:"btn btn-primary" %>
 </div>

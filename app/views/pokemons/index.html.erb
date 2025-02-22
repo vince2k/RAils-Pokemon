@@ -1,14 +1,23 @@
 <div class="container mt-3">
 
   <h1>Pokedex</h1>
-  <%= link_to "< Trainers", trainers_path %>
-  <%# lien random pokémon %>
-  <p class="mb-4">random pokemons</p>
-  <%#  Search for pokémon%>
+  <h6><%= link_to "< Trainers", trainers_path %></h6>
+  <h6><%= link_to "Random Pokémon", random_pokemons_path %></h6>
+  <div class="mb-3">
+    <%= simple_form_for :search, url: search_pokemons_path, method: :get do |f| %>
+        <%= f.input :query, label: false, placeholder: "Search a Pokémon...", input_html: { name: 'query' } %>
+        <%= f.submit "Search", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+
+  <% if @pokemons.empty? %>
+      <p class="text-muted">No Pokémon found.</p>
+  <% end %>
 
   <div class="row mb-3">
     <% @pokemons.each do |pokemon| %>
-      <div class="col-md-4 col-lg-3 mb-3">
+      <div class="col-md-4 col-sm-6 col-lg-3 mb-3">
         <div class="card card-pokemon">
           <% if pokemon.photo.attached? %>
             <%= link_to pokemon_path(pokemon) do %>

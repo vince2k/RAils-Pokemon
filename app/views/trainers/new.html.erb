@@ -1,0 +1,14 @@
+<div class="container">
+<%= link_to "< All Trainers", trainers_path %>
+
+<h1>Sign up to train</h1>
+
+<%= simple_form_for (@trainer) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :age %>
+  <%= f.input :photo, as: :file %>
+  <%= f.submit class:"btn btn-primary"%>
+<% end %>
+
+
+</div>
