@@ -10,3 +10,28 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+
+body {
+  background-color: #051F49;
+  padding-top: 32px;
+  padding-bottom: 48px;
+}
+
+* {
+  font-family: "Pixelify Sans", serif !important;
+}
+
+.input-group {
+  width: 100%;
+}
+
+.input-group .form-control {
+  flex: 1;  // L'input prend toute la place disponible
+  height: 100%; // Garde la même hauteur que le bouton
+}
+
+.input-group .btn {
+  height: 100%; // Assure la même hauteur que l'input
+}
+

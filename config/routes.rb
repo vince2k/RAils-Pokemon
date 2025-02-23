@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       get :search
       get :random
     end
-    resources :pokeballs, only: [:new, :create]
+    resources :pokeballs, only: [:create]
   end
 
   resources :trainers, only: [:index, :show, :new, :create]

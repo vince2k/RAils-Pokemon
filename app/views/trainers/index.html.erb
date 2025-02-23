@@ -1,6 +1,6 @@
 <div class="container">
 
-<%= link_to "< Pokedex", root_path  %>
+  <h3><%= link_to "< Pokedex", root_path  %></h3>
 
   <h1 class="mb-4">Let's get training !</h1>
 
@@ -15,7 +15,8 @@
               </div>
               <div class="card-body text-center">
                 <h5><%= trainer.name %></h5>
-                <p><strong>Age :</strong> <%= trainer.age %></p>
+                <p><strong><%= trainer.age %></strong> years old </p>
+                <p>Trains <strong><%= trainer.pokemons.count %></strong> pokémon<%= trainer.pokemons.count  > 1 ? "s" : "" %></p>
               </div>
             <% end %>
           <% end %>

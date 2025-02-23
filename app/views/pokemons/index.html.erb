@@ -1,18 +1,24 @@
 <div class="container mt-3">
 
-  <h1>Pokedex</h1>
+  <h1><%= link_to "Pokedex", root_path  %></h1>
+
   <h6><%= link_to "< Trainers", trainers_path %></h6>
+
   <h6><%= link_to "Random Pokémon", random_pokemons_path %></h6>
-  <div class="mb-3">
-    <%= simple_form_for :search, url: search_pokemons_path, method: :get do |f| %>
-        <%= f.input :query, label: false, placeholder: "Search a Pokémon...", input_html: { name: 'query' } %>
-        <%= f.submit "Search", class: "btn btn-primary" %>
-    <% end %>
-  </div>
+
+<div class="w-100 mb-3">
+  <%= simple_form_for :search, url: search_pokemons_path, method: :get, html: { class: "w-100" } do |f| %>
+    <div>
+      <%= f.input :query, label: false, placeholder: "Search a Pokémon...", input_html: { class: "form-control", name: 'query' } %>
+      <%= f.submit "Search", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
+
 
 
   <% if @pokemons.empty? %>
-      <p class="text-muted">No Pokémon found.</p>
+      <p >No Pokémon found.</p>
   <% end %>
 
   <div class="row mb-3">
